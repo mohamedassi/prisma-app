@@ -1,4 +1,5 @@
 FROM node:24
+
 WORKDIR /app
 
 COPY package*.json ./
@@ -10,4 +11,5 @@ RUN npx prisma generate
 COPY . .
 
 EXPOSE 3000
-CMD ["node", "main.js"]
+
+CMD ["npx", "tsx", "main.ts"]
