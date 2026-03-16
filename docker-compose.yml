@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: prisma-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mo059mo123
+      POSTGRES_DB: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: mohamedassi04/my-prisma-image
+    container_name: my-app
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: "postgres://postgres:mo059mo123@postgres:5432/postgres"
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:
