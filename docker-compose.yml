@@ -16,7 +16,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   app:
-    build: mohamedassi04/my-prisma-image
+    image: mohamedassi04/my-prisma-image
     container_name: my-app
     depends_on:
       - postgres
